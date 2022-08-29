@@ -1,11 +1,9 @@
-import connect from '../database/connect';
-import Entry from '../models/Entry';
-import Log from '../models/Log';
-import fetchWeatherData from '../utils/fetchWeatherData';
+import connect from '../database/connect.js';
+import Entry from '../models/Entry/index.js';
+import Log from '../models/Log/index.js';
+import fetchWeatherData from '../utils/fetchWeatherData.js';
 
-
-
-export default async function handler(req, res) {
+export default async function handler(req, reply) {
   try {
     await connect();
 
@@ -48,13 +46,13 @@ export default async function handler(req, res) {
       entry
     });
 
-    await res.status(200).json({ 
+    return { 
       entry, 
       debug: { 
         bodyType: typeof body,
         body
       } 
-    })
+    }
   } catch (error) {
     log('Unknown failure', {
       error,

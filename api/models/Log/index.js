@@ -2,8 +2,10 @@
 * Models -> Logs
  */
 
-import { Schema, model } from 'mongoose';
-import genericTransformer from '../../utils/genericTransformer';
+import mongoose from 'mongoose';
+import genericTransformer from '../../utils/genericTransformer.js';
+
+const { Schema, model } = mongoose;
 
 const LogSchema = new Schema(
   {

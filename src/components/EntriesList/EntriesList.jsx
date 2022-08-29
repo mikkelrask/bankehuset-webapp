@@ -53,7 +53,7 @@ const EntriesList = ({ data }) => {
 
   const rows = data.map((row) => (
     <tr key={row._id}>
-      <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'dd/MM/yyyy h:m')}</td>
+      <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'dd/MM/yyyy HH:mm')}</td>
       <td style={{ verticalAlign: 'top' }}>{row.temperature}</td>
       <td style={{ verticalAlign: 'top' }}>
         <Weather data={row.data} />

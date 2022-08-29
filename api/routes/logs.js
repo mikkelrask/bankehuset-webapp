@@ -1,27 +1,20 @@
 /**
-* Entries
+* Logs
  */
 
-import connect from '../database/connect';
-import Entry from '../models/Entry';
-import { DateTime } from 'luxon';
+import connect from '../database/connect.js';
+import Log from '../models/Log.js';
 
-export default async function handler(req, res) {
+export default async function handler(req, reply) {
   await connect();
 
   const { query } = req;
-
-  /**
-   * Get entries
-   */
-  
-  // Pagination settings
   const perPage = Number(query.perPage ?? 25);
   const page = Number(query.page ?? 1);
   const skip = page > 0 ? (page - 1) * perPage : 0;
 
   if (req.method === 'GET') {
-    const entries = await Entry.aggregate([
+    const logs = await Log.aggregate([
       // Sort by latest
       { $sort: { createdAt: -1 } },
       {
@@ -35,10 +28,12 @@ export default async function handler(req, res) {
       },
     ]).then((items) => items[0]);;
 
-    return res.status(200).json(entries);
+    return res.status(200).json(logs);
   }
 
-  return res.status(401).json({
+  reply.statusCode = 401;
+
+  return {
     message: 'Invalid request method',
-  })
+  }
 }

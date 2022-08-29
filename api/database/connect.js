@@ -1,9 +1,10 @@
 import mongoose from 'mongoose';
-import log from '../utils/log';
+import log from '../utils/log.js';
+import dotenv from 'dotenv';
 
-const MONGO_DB_URL = process.env.GATSBY_MONGO_DB_URL ?? '';
+dotenv.config();
 
-let connection;
+const MONGO_DB_URL = process.env.MONGO_DB_URL ?? '';
 
 log(
   `Database is ${
