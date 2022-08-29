@@ -1,0 +1,26 @@
+[
+    {
+        "functionRoute": "collect",
+        "pluginName": "default-site-plugin",
+        "originalAbsoluteFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/src/api/collect.js",
+        "originalRelativeFilePath": "collect.js",
+        "relativeCompiledFilePath": "collect.js",
+        "absoluteCompiledFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/.cache/functions/collect.js"
+    },
+    {
+        "functionRoute": "entries",
+        "pluginName": "default-site-plugin",
+        "originalAbsoluteFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/src/api/entries.js",
+        "originalRelativeFilePath": "entries.js",
+        "relativeCompiledFilePath": "entries.js",
+        "absoluteCompiledFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/.cache/functions/entries.js"
+    },
+    {
+        "functionRoute": "logs",
+        "pluginName": "default-site-plugin",
+        "originalAbsoluteFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/src/api/logs.js",
+        "originalRelativeFilePath": "logs.js",
+        "relativeCompiledFilePath": "logs.js",
+        "absoluteCompiledFilePath": "/Users/rasmuswolk/Projects/bankehuset/bankehuset-node/.cache/functions/logs.js"
+    }
+]

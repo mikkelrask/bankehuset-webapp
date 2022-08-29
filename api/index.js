@@ -1,9 +1,21 @@
+import path from 'path';
+import { dirname } from 'path';
+import Fastify from 'fastify';
+import FastifyStatic from '@fastify/static';
+
+const root = path.resolve('public')
+
 // Require the framework and instantiate it
-const fastify = require('fastify')({ logger: true })
+const fastify = Fastify({ logger: true })
+
+fastify.register(FastifyStatic, {
+  root,
+  wildcard: true,
+})
 
 // Declare a route
-fastify.get('/', async (request, reply) => {
-  return { hello: 'world' }
+fastify.get('/', function (req, reply) {
+  reply.sendFile('index.html');
 })
 
 // Run the server!

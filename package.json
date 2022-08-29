@@ -4,6 +4,7 @@
   "private": true,
   "description": "Bankehuset",
   "author": "Rasmus Wølk",
+  "type": "module",
   "keywords": [
     "gatsby"
   ],
@@ -12,11 +13,13 @@
     "start": "gatsby develop",
     "build": "gatsby build",
     "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "clean": "gatsby clean",
+    "start-api": "node ./api/index.js"
   },
   "dependencies": {
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@fastify/static": "^6.5.0",
     "@mantine/carousel": "^5.0.0",
     "@mantine/core": "^5.0.0",
     "@mantine/hooks": "^5.0.0",
@@ -39,6 +42,7 @@
     "gatsby-plugin-theme-ui": "^0.14.6",
     "luxon": "^3.0.1",
     "mongoose": "^6.5.0",
+    "path": "^0.12.7",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-helmet": "^6.1.0",
@@ -47,5 +51,10 @@
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
     "theme-ui": "^0.14.6"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.13",
+    "@babel/node": "^7.18.10",
+    "@babel/preset-env": "^7.18.10"
   }
 }
