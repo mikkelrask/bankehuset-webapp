@@ -11,6 +11,7 @@ const app = Fastify({ logger: true })
 
 app.register(FastifyStatic, {
   root,
+  prefix: '/public',
   wildcard: true,
 })
 
@@ -39,8 +40,15 @@ app.register((fastify, opts, next) => {
 }, { prefix: '/api' })
 
 // Web app
-app.get('/', function (req, reply) {
-  reply.sendFile('index.html');
+app.get('/*', function (req, reply) {
+  const isFile = req.url.split('.').length > 1;
+  let file = `${req.url.replace(/\/+$/, '')}/index.html`;
+
+  if (isFile) {
+    file = req.url;
+  }
+
+  reply.sendFile(file);
 })
 
 app.get('/log', function (req, reply) {
