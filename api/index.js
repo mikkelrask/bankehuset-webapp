@@ -44,15 +44,15 @@ app.get('/*', function (req, reply) {
   const isFile = req.url.split('.').length > 1;
   let file = `${req.url.replace(/\/+$/, '')}/index.html`;
 
+  return req.url;
+
   if (isFile) {
     file = req.url;
   }
 
-  reply.sendFile(file);
-})
+  console.log({file})
 
-app.get('/log', function (req, reply) {
-  reply.sendFile('log/index.html');
+  reply.sendFile(file);
 })
 
 // Run the server!
