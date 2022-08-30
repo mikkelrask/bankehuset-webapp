@@ -11,8 +11,8 @@ const app = Fastify({ logger: true })
 
 app.register(FastifyStatic, {
   root,
-  prefix: '/public',
-  wildcard: true,
+  prefixAvoidTrailingSlash: true,
+  wildcard: false,
 })
 
 // API
@@ -43,8 +43,6 @@ app.register((fastify, opts, next) => {
 app.get('/*', function (req, reply) {
   const isFile = req.url.split('.').length > 1;
   let file = `${req.url.replace(/\/+$/, '')}/index.html`;
-
-  return req.url;
 
   if (isFile) {
     file = req.url;
