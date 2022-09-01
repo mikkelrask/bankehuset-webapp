@@ -7,9 +7,7 @@ dotenv.config();
 const MONGO_DB_URL = process.env.MONGO_DB_URL ?? '';
 
 log(
-  `Database is ${
-    MONGO_DB_URL?.split('@')?.[1]?.split('.')[0]
-  }`
+  `Database URL: ${MONGO_DB_URL}`
 );
 
 
