@@ -1,7 +1,8 @@
-name: Build on Push to Main
-on: [push]
-  branches:
-    - production
+name: Build on Push to production
+on: 
+  push:
+    branches:
+      - production
 jobs:
 
   build:
