@@ -1,5 +1,7 @@
 name: Build on Push to Main
 on: [push]
+  branches:
+    - production
 jobs:
 
   build:
