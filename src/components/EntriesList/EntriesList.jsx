@@ -67,7 +67,7 @@ const EntriesList = ({ data }) => {
         <thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
           <tr>
             <th>Timestamp</th>
-            <th>Temperture</th>
+            <th>Temperature</th>
             <th>Weather</th>
           </tr>
         </thead>
