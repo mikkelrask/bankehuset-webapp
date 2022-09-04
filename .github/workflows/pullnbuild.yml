@@ -12,5 +12,6 @@ jobs:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEY }}
+        passphrase: ${{ secrets.PASSPHRASE }}
         port: ${{ secrets.PORT }}
         script: sh /home/opc/bin/rebuildaction.sh
