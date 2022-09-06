@@ -5,7 +5,7 @@ import EntriesList from "../components/EntriesList";
 
 const Home = () => {
   const [page, setPage] = useState(1);
-  const [perPage] = useState(250);
+  const [perPage] = useState(25);
 
   const {
     data,
