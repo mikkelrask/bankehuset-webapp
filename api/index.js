@@ -44,6 +44,8 @@ app.get('/*', function (req, reply) {
   const isFile = req.url.split('.').length > 1;
   let file = `${req.url.replace(/\/+$/, '')}/index.html`;
 
+console.log('req.url', req.url)
+
   if (isFile) {
     file = req.url;
   }
