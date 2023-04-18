@@ -6,7 +6,7 @@ import connect from '../database/connect.js';
 import Log from '../models/Log.js';
 
 export default async function handler(req, reply) {
-  await connect();
+  // await connect();
 
   const { query } = req;
   const perPage = Number(query.perPage ?? 25);

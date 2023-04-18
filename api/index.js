@@ -3,6 +3,7 @@ import Fastify from 'fastify';
 import FastifyStatic from '@fastify/static';
 import collect from './routes/collect.js';
 import entries from './routes/entries.js';
+import connect from './database/connect.js';
 
 const root = path.resolve('public')
 
@@ -58,6 +59,13 @@ console.log('req.url', req.url)
 // Run the server!
 const start = async () => {
   try {
+    // Connect to database
+    connect().then(async () => {
+    console.log('💾 Connected to database');
+    }).catch(error => {
+      console.log('Failed to connect to database')
+    });
+
     await app.listen({ port: 3000 })
   } catch (err) {
     console.error('Error:', err);

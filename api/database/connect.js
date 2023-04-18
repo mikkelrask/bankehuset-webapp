@@ -10,9 +10,9 @@ log(
   `Database URL: ${MONGO_DB_URL}`
 );
 
+mongoose.connection.on('Error on connection', (error) => log('Mogoose error', error));
 
 const connect = () =>
-  mongoose.connection.on('Error on connection', (error) => log('Mogoose error', error));
   mongoose.connect(MONGO_DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
