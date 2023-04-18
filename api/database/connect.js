@@ -1,7 +1,14 @@
 import mongoose from 'mongoose';
 import log from '../utils/log.js';
+import path from 'path';
+import dotenv from 'dotenv';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-const MONGO_DB_URL = process.env.MONGO_DB_URL ?? 'mongodb://root:rootpassword@127.0.0.1:27017/bankehuset?authSource=admin';
+dotenv.config({
+  path: path.resolve(__dirname, '../../.env')
+});
+
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
 
 log(
   `Database URL: ${MONGO_DB_URL}`

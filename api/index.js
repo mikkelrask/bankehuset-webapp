@@ -5,11 +5,14 @@ import collect from './routes/collect.js';
 import entries from './routes/entries.js';
 import connect from './database/connect.js';
 import dotenv from 'dotenv';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve(__dirname, '../.env')
+});
+
 console.log('Loaded env', process.env);
-
-const root = path.resolve('../public')
+const root = path.resolve(__dirname, '../public')
 
 console.log('Root', root)
 
