@@ -4,6 +4,9 @@ import FastifyStatic from '@fastify/static';
 import collect from './routes/collect.js';
 import entries from './routes/entries.js';
 import connect from './database/connect.js';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 const root = path.resolve('public')
 
