@@ -7,6 +7,7 @@ import connect from './database/connect.js';
 import dotenv from 'dotenv';
 
 dotenv.config();
+console.log('Loaded env', process.env);
 
 const root = path.resolve('public')
 
