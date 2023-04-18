@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Button } from '@mantine/core';
-import  { useGetEntriesQuery } from "../services/entries";
+import  { useDeleteEntryMutation, useGetEntriesQuery } from "../services/entries";
 import EntriesList from "../components/EntriesList";
 
 const Home = () => {
@@ -17,6 +17,16 @@ const Home = () => {
     refetchOnMountOrArgChange: true
   });
 
+  const [deleteEntryRequest] = useDeleteEntryMutation();
+
+  const handleDelete =  async (id) => {
+    try {
+      await deleteEntryRequest(id);
+    } catch (err) {
+      console.error('Failed to delete entry with ID', id);
+    }
+  }
+
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -27,7 +37,7 @@ const Home = () => {
 
   return (
     <div>
-      <EntriesList data={data.data ?? []} />
+      <EntriesList data={data.data ?? []} onDelete={handleDelete} />
       <br /><br />
       {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Newer</Button> : null}{' '}
       {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Older</Button> : null}

@@ -2,22 +2,26 @@ import path from 'path';
 import Fastify from 'fastify';
 import FastifyStatic from '@fastify/static';
 import collect from './routes/collect.js';
+import deleteEntry from './routes/delete.js';
 import entries from './routes/entries.js';
 import connect from './database/connect.js';
 import dotenv from 'dotenv';
+import cors from '@fastify/cors';
 const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 dotenv.config({
   path: path.resolve(__dirname, '../.env')
 });
 
-console.log('Loaded env', process.env);
 const root = path.resolve(__dirname, '../public')
-
-console.log('Root', root)
 
 // Require the framework and instantiate it
 const app = Fastify({ logger: true })
+
+await app.register(cors, { 
+  // put your options here
+})
+
 
 app.register(FastifyStatic, {
   root,
@@ -44,6 +48,12 @@ app.register((fastify, opts, next) => {
     url: '/logs',
     method: 'GET',
     handler: entries
+  });
+
+  fastify.route({
+    url: '/:id',
+    method: 'DELETE',
+    handler: deleteEntry
   });
 
   next();
