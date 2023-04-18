@@ -57,7 +57,7 @@ console.log('req.url', req.url)
     file = req.url;
   }
 
-  console.log({file})
+  console.log({root, file})
 
   reply.sendFile(file);
 })
