@@ -7,7 +7,7 @@ const { createApi } = require("@reduxjs/toolkit/query/react");
 const { fetchBaseQuery } = require("@reduxjs/toolkit/query");
 
 const baseQuery = fetchBaseQuery({
-  baseUrl: `http://localhost:3000/api`,
+  baseUrl: process.env.GATSBY_API_URL,
   // prepareHeaders: (headers, { getState }) => {
   //   return headers;
   // },
