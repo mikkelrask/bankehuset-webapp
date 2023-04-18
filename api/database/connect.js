@@ -1,21 +1,7 @@
 import mongoose from 'mongoose';
 import log from '../utils/log.js';
 
-// import path from 'path';
-// import { fileURLToPath } from 'url';
-// import dotenv from 'dotenv';
-
-// const loadEnv = () => {
-//   const __filename = fileURLToPath(import.meta.url);
-//   const __dirname = path.dirname(__filename);
-//   const envPath = path.resolve(__dirname, '.env');
-//   console.log('Load env file', envPath);
-//   dotenv.config({ path: envPath });
-// }
-
-// loadEnv();
-
-const MONGO_DB_URL = process.env.MONGO_DB_URL ?? '';
+const MONGO_DB_URL = process.env.MONGO_DB_URL ?? 'mongodb://root:rootpassword@127.0.0.1:27017/bankehuset?authSource=admin';
 
 log(
   `Database URL: ${MONGO_DB_URL}`
