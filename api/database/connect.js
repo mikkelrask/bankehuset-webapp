@@ -1,8 +1,9 @@
 import mongoose from 'mongoose';
 import log from '../utils/log.js';
+import path from 'path';
 import dotenv from 'dotenv';
 
-dotenv.config();
+dotenv.config({ path: path.resolve(__dirname, '/.env') });
 
 const MONGO_DB_URL = process.env.MONGO_DB_URL ?? '';
 

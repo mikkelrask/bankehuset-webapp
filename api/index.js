@@ -63,7 +63,7 @@ const start = async () => {
     connect().then(async () => {
     console.log('💾 Connected to database');
     }).catch(error => {
-      console.log('Failed to connect to database')
+      console.log('Failed to connect to database');
     });
 
     await app.listen({ port: 3000 })
