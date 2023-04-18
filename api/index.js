@@ -11,6 +11,8 @@ console.log('Loaded env', process.env);
 
 const root = path.resolve('public')
 
+console.log('Root', root)
+
 // Require the framework and instantiate it
 const app = Fastify({ logger: true })
 
