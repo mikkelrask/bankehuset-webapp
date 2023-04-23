@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { createStyles, Table, ScrollArea, Button } from '@mantine/core';
 import { format } from 'date-fns';
+import '../../styles/style.css';
 
 const Weather = (data) => {
   const [show, setShow] = useState(false);
@@ -11,12 +12,12 @@ const Weather = (data) => {
   }
 
   if (!show) {
-    return <Button style={{padding: '5px', margin: '0 -5px'}} variant="subtle" onClick={() => setShow(true)}>Show weather data</Button>
+    return <Button style={{padding: '5px', margin: '0 -5px'}} variant="subtle" onClick={() => setShow(true)}>Vis vejrdata</Button>
   }
 
   return (
     <>
-      <Button style={{padding: '5px', margin: '0 -5px'}} variant="subtle" onClick={() => setShow(false)}>Hide weather data</Button>
+      <Button style={{padding: '5px', margin: '0 -5px'}} variant="subtle" onClick={() => setShow(false)}>Skjul vejrdata</Button>
       <br />
       <pre>{JSON.stringify(data, null, 4)}</pre>
     </>
@@ -53,7 +54,7 @@ const EntriesList = ({ data }) => {
 
   const rows = data.map((row) => (
     <tr key={row._id}>
-      <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'dd/MM/yyyy HH:mm')}</td>
+      <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'HH:mm')}</td>
       <td style={{ verticalAlign: 'top' }}>{row.temperature}</td>
       <td style={{ verticalAlign: 'top' }}>
         <Weather data={row.data} />
@@ -66,9 +67,9 @@ const EntriesList = ({ data }) => {
       <Table sx={{ minWidth: 700, maxWidth: 1000 }}>
         <thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
           <tr>
-            <th>Timestamp</th>
-            <th>Temperature</th>
-            <th>Weather</th>
+            <th>Tidspunkt</th>
+            <th>Badevandstemperatur</th>
+            <th>Vejr</th>
           </tr>
         </thead>
         <tbody>{rows}</tbody>
