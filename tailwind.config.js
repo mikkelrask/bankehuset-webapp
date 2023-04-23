@@ -6,7 +6,7 @@ module.exports = {
         width: {
           '1/2-4': 'calc(50% - 8px)',
           '1/3-4': 'calc(33% - 8px)',
-          '2/3-4': 'calc(66% - 8px)',
+          '2/3-4': 'calc(66.5% - 8px)',
           '1/4-4': 'calc(25% - 8px)',
         },
         margin: {
