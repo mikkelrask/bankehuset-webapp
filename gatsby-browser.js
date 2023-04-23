@@ -1,10 +1,16 @@
-const React = require("react")
-const { MantineProvider } = require('@mantine/core');
-const { Provider: ReduxProvider } = require('react-redux');
-const store = require('./src/store');
-const { Helmet } = require("react-helmet");
+import 'tailwindcss/base.css';
+import 'tailwindcss/components.css';
+import 'tailwindcss/utilities.css';
+import './src/styles/tailwindcss.css';
+import './src/styles/style.css';
 
-exports.wrapRootElement = ({ element }) => {
+import React from "react";
+import { MantineProvider } from '@mantine/core';
+import { Provider as ReduxProvider } from 'react-redux';
+import store from './src/store';
+import { Helmet } from "react-helmet";
+
+export const wrapRootElement = ({ element }) => {
   return (
     <ReduxProvider store={store}>
       <Helmet>
@@ -16,3 +22,4 @@ exports.wrapRootElement = ({ element }) => {
     </ReduxProvider>
   )
 }
+

@@ -1,3 +1,11 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
+
+html {
+  background-color: #ffaa00;
+  background-image: url("../images/liquid-cheese.svg");
+  background-attachment: fixed;
+  background-size: cover;
+}
+
