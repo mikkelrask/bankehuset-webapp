@@ -10,6 +10,7 @@ import LineChartComponent from '../components/LineChartComponent';
 const Home = () => {
   const [page, setPage] = useState(1);
   const [perPage] = useState(250);
+  const [showEntriesList, setShowEntriesList] = useState(false);
 
   const {
     data,
@@ -60,7 +61,10 @@ const Home = () => {
         <LineChartComponent data={humidityData} type="Luftfugtighed" readings={12} className="w-1/2-4 lg:w-1/3-4" unit="%" />
       </div>
       <div class="p-16">
-        <EntriesList data={data.data ?? []} />
+        <Button onClick={() => setShowEntriesList(prev => !prev)}>
+          {showEntriesList ? 'Skjul entries' : 'Vis entries'}
+        </Button>
+        {showEntriesList && <EntriesList data={data.data ?? []} />}
         <br /><br />
         {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Nyere</Button> : null}{' '}
         {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Ældre</Button> : null}
