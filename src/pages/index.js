@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import { Button } from '@mantine/core';
 import  { useGetEntriesQuery } from "../services/entries";
+import Logo from "../components/Logo";
+import '../styles/style.css';
+import LatestWeather from "../components/LatestWeather";
 import EntriesList from "../components/EntriesList";
+import LineChartComponent from '../components/LineChartComponent';
 
 const Home = () => {
   const [page, setPage] = useState(1);
@@ -18,20 +22,50 @@ const Home = () => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return <div>Indlæser...</div>;
   }
 
   if (!data) {
-    return <div>No data yet</div>
+    return <div>Ingen data fundet.</div>
   }
 
+  const waterTempData = data.data.map(entry => ({
+    timestamp: entry.timestamp,
+    value: entry.temperature,
+  }));
+
+  const tempData = data.data.map(entry => ({
+    timestamp: entry.timestamp,
+    value: entry.data.main.temp,
+  }));
+
+  const windSpeedData = data.data.map(entry => ({
+    timestamp: entry.timestamp,
+    value: entry.data.wind.speed,
+  }));
+
+  const humidityData = data.data.map(entry => ({
+    timestamp: entry.timestamp,
+    value: entry.data.main.humidity,
+  }));
+
   return (
-    <div>
-      <EntriesList data={data.data ?? []} />
-      <br /><br />
-      {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Newer</Button> : null}{' '}
-      {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Older</Button> : null}
-    </div>
+    <>
+      <Logo />
+      <div class="p-16 w-full flex flex-wrap gap-4 justify-between">
+        <LatestWeather data={data.data ?? []} />
+        <LineChartComponent data={waterTempData} type="Badevand" readings={12} className="w-1/2-4 lg:w-1/3-4" unit="C°" />
+        <LineChartComponent data={tempData} type="Temperatur" readings={12} className="w-1/2-4 lg:w-1/3-4" unit="C°" />
+        <LineChartComponent data={windSpeedData} type="Vind" readings={12} className="w-1/2-4 lg:w-1/3-4" unit="m/s"/>
+        <LineChartComponent data={humidityData} type="Luftfugtighed" readings={12} className="w-1/2-4 lg:w-1/3-4" unit="%" />
+      </div>
+      <div class="p-16">
+        <EntriesList data={data.data ?? []} />
+        <br /><br />
+        {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Nyere</Button> : null}{' '}
+        {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Ældre</Button> : null}
+      </div>
+    </>
   )
 }
 
