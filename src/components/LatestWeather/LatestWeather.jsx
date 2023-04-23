@@ -59,7 +59,7 @@ const LatestWeather = ({ data }) => {
     <div className="bg-gradient-to-r from-cyan-500 to-blue-500 text-white p-4 rounded-lg shadow-md w-full md:w-2/3-4 ">
       <div className="flex justify-center items-center mb-4">
       <div className="w-32 h-32">
-        <IconComponent alt={description} style={{ width: '32px', height: '32px', transform: 'scale(4)' }} className=" object-contain object-center" />
+        <IconComponent alt={description} style={{ width: '64px', height: '64px', transform: 'scale(5)' }} className=" object-contain object-center" />
       </div>
         <span className="text-2xl font-semibold ml-4 capitalize">{translations[main]}</span> <br />
         <span className="text-xl font-semibold ml-4 capitalize">{`/ ${translations[description]}`}</span>
