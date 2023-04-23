@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { ReactComponent as ClearDay } from '../../icons/icon01d.svg';
 import { ReactComponent as FewCloudsDay } from '../../icons/icon02d.svg';
 import { ReactComponent as ScatteredCloudsDay } from '../../icons/icon03d.svg';
@@ -19,13 +20,18 @@ const icons = {
   '13d': SnowDay,
 };
 
-const WeatherIcon = ({ iconName }) => {
+const WeatherIcon = ({ iconName, className, ...props }) => {
   const IconComponent = icons[iconName];
   return (
-    <div>
-      <IconComponent />
+    <div className={className}>
+      <IconComponent {...props} />
     </div>
   );
+};
+
+WeatherIcon.propTypes = {
+  iconName: PropTypes.string.isRequired,
+  className: PropTypes.string,
 };
 
 export default WeatherIcon;
