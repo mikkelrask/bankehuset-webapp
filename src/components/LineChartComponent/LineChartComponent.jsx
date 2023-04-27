@@ -1,5 +1,12 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { LineChart, XAxis, YAxis, CartesianGrid, Line, Tooltip } from 'recharts';
+import React, { useRef, useEffect, useState } from "react";
+import {
+  LineChart,
+  XAxis,
+  YAxis,
+  CartesianGrid,
+  Line,
+  Tooltip,
+} from "recharts";
 
 const LineChartComponent = ({ data, type, readings, className, unit }) => {
   const chartRef = useRef(null);
@@ -10,28 +17,44 @@ const LineChartComponent = ({ data, type, readings, className, unit }) => {
     const chartContainerPadding = 16;
 
     const handleResize = () => {
-      const chartContainerWidth = chartContainer.offsetWidth - chartContainerPadding * 2;
+      const chartContainerWidth =
+        chartContainer.offsetWidth - chartContainerPadding * 2;
       const chartContainerHeight = chartContainerWidth / 2;
 
-      setChartSize({ width: chartContainerWidth, height: chartContainerHeight });
+      setChartSize({
+        width: chartContainerWidth,
+        height: chartContainerHeight,
+      });
     };
 
-    window.addEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
     handleResize();
 
-    return () => window.removeEventListener('resize', handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   const reversedData = [...data].reverse();
-
+  const currentTime = new Date().toLocaleTimeString();
   return (
-    <div className={`bg-white rounded-xl p-4 chart-container ${className}`} ref={chartRef}>
+    <div
+      className={`bg-white rounded-xl p-4 chart-container ${className}`}
+      ref={chartRef}
+    >
       <h2 className="text-lg font-semibold">{type}</h2>
-      <LineChart width={chartSize.width} height={chartSize.height} data={reversedData.slice(0, readings)}>
+      <LineChart
+        width={chartSize.width}
+        height={chartSize.height}
+        data={reversedData.slice(0, readings)}
+      >
         <XAxis dataKey="" />
         <YAxis unit={unit} />
         <CartesianGrid stroke="#fff" />
-        <Line type="monotone" dataKey="value" strokeWidth={3} stroke="#0084d8" />
+        <Line
+          type="monotone"
+          dataKey="value"
+          strokeWidth={3}
+          stroke="#3b82f6"
+        />
         <Tooltip />
       </LineChart>
     </div>

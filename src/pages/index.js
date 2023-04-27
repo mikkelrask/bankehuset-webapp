@@ -78,7 +78,7 @@ const Home = () => {
         <LatestWeather data={data.data ?? []} />
         <LineChartComponent
           data={waterTempData}
-          type="Badevand"
+          type="Badevand (seneste 12 timer)"
           readings={12}
           className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="C°"
