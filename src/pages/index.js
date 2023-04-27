@@ -79,28 +79,28 @@ const Home = () => {
         <LineChartComponent
           data={waterTempData}
           type="Badevand (seneste 12 timer)"
-          readings={12}
+          readings={64}
           className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="C°"
         />
         <LineChartComponent
           data={tempData}
           type="Temperatur"
-          readings={12}
+          readings={64}
           className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="C°"
         />
         <LineChartComponent
           data={windSpeedData}
           type="Vind"
-          readings={12}
+          readings={64}
           className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="m/s"
         />
         <LineChartComponent
           data={humidityData}
           type="Luftfugtighed"
-          readings={12}
+          readings={64}
           className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="%"
         />
