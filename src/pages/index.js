@@ -71,35 +71,37 @@ const Home = () => {
 
   return (
     <>
-      <Logo />
-      <div class="p-16 w-full flex flex-wrap gap-4 justify-between">
+      <div class="lg:container lg:mx-auto">
+        <Logo />
+      </div>
+      <div class="p-16 w-full flex flex-wrap gap-4 justify-between lg:container lg:mx-auto">
         <LatestWeather data={data.data ?? []} />
         <LineChartComponent
           data={waterTempData}
           type="Badevand"
           readings={12}
-          className="w-1/2-4 lg:w-1/3-4"
+          className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="C°"
         />
         <LineChartComponent
           data={tempData}
           type="Temperatur"
           readings={12}
-          className="w-1/2-4 lg:w-1/3-4"
+          className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="C°"
         />
         <LineChartComponent
           data={windSpeedData}
           type="Vind"
           readings={12}
-          className="w-1/2-4 lg:w-1/3-4"
+          className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="m/s"
         />
         <LineChartComponent
           data={humidityData}
           type="Luftfugtighed"
           readings={12}
-          className="w-1/2-4 lg:w-1/3-4"
+          className="w-full md:w-1/2-4 lg:w-1/3-4"
           unit="%"
         />
       </div>
