@@ -5,7 +5,7 @@ import fetchWeatherData from '../utils/fetchWeatherData.js';
 
 export default async function handler(req, reply) {
   try {
-    await connect();
+    // await connect();
 
     const { body } = req;
 

@@ -1,18 +1,22 @@
 import mongoose from 'mongoose';
 import log from '../utils/log.js';
+import path from 'path';
 import dotenv from 'dotenv';
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
-dotenv.config();
+dotenv.config({
+  path: path.resolve(__dirname, '../../.env')
+});
 
-const MONGO_DB_URL = process.env.MONGO_DB_URL ?? '';
+const MONGO_DB_URL = process.env.MONGO_DB_URL;
 
 log(
   `Database URL: ${MONGO_DB_URL}`
 );
 
+mongoose.connection.on('Error on connection', (error) => log('Mogoose error', error));
 
 const connect = () =>
-  mongoose.connection.on('Error on connection', (error) => log('Mogoose error', error));
   mongoose.connect(MONGO_DB_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,

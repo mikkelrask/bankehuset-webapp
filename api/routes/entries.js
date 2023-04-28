@@ -7,7 +7,7 @@ import Entry from '../models/Entry/index.js';
 import { DateTime } from 'luxon';
 
 export default async function handler(req, reply) {
-  await connect();
+  // await connect();
 
   const { query } = req;
 
