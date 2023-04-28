@@ -13,6 +13,7 @@ const Home = () => {
   const [perPage] = useState(250);
   const [showEntriesList, setShowEntriesList] = useState(false);
 
+<<<<<<< HEAD
   const {
     data,
     isLoading
@@ -32,6 +33,17 @@ const Home = () => {
     }
   }
 
+=======
+  const { data, isLoading } = useGetEntriesQuery(
+    {
+      page,
+      perPage,
+    },
+    {
+      refetchOnMountOrArgChange: true,
+    }
+  );
+>>>>>>> main
 
   if (isLoading) {
     return (
