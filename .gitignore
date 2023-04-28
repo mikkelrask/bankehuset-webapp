@@ -2,7 +2,8 @@
 node_modules/
 
 .cache/
-public/*
+public/
+public/*/**
 
 src/gatsby-types.d.ts
 
@@ -59,3 +60,4 @@ tags
 # Ignore all local history of files
 .history
 .ionide
+.env
