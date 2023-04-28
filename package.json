@@ -13,7 +13,7 @@
     "build": "gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
-    "start-server-local": "node ./api/index.js",
+    "start-server-local": "yarn build && node ./api/index.js",
     "start-server": "NODE_PORT=3000 pm2 start api/index.js --name bankehuset",
     "reload-server": "NODE_PORT=3000 pm2 reload api/index.js --name bankehuset"
   },
@@ -59,7 +59,7 @@
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-    "tailwindcss": "^3.3.1",
+    "tailwindcss": "^3.3.2",
     "theme-ui": "^0.14.6"
   },
   "devDependencies": {
