@@ -48,11 +48,36 @@ const useStyles = createStyles((theme) => ({
   },
 }));
 
-const EntriesList = ({ data }) => {
+const Row = ({ data, onDelete }) => {
+  const [deleting, setDeleting] = useState(false);
+
+  const handleDelete = async () => {
+    setDeleting(true);
+    await onDelete(data._id);
+  }
+
+  return (
+      <tr key={data._id}>
+      <td style={{ verticalAlign: 'top' }}>{format(new Date(data.createdAt), 'dd/MM/yyyy HH:mm')}</td>
+      <td style={{ verticalAlign: 'top' }}>{data.temperature?.toFixed(1)}</td>
+      <td style={{ verticalAlign: 'top' }}>
+        <Weather data={data.data} />
+      </td>
+      <td style={{ verticalAlign: 'top' }}>
+        <Button disabled={deleting} onClick={handleDelete}>
+          Delete
+        </Button>
+      </td>
+    </tr>
+)
+}
+
+const EntriesList = ({ data, onDelete }) => {
   const { classes, cx } = useStyles();
   const [scrolled, setScrolled] = useState(false);
 
   const rows = data.map((row) => (
+<<<<<<< HEAD
     <tr key={row._id}>
       <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'HH:mm')}</td>
       <td style={{ verticalAlign: 'top' }}>{row.temperature}</td>
@@ -60,6 +85,9 @@ const EntriesList = ({ data }) => {
         <Weather data={row.data} />
       </td>
     </tr>
+=======
+    <Row key={row._id} data={row} onDelete={onDelete} />
+>>>>>>> origin/master
   ));
 
   return (
@@ -67,9 +95,16 @@ const EntriesList = ({ data }) => {
       <Table sx={{ minWidth: 700, maxWidth: 1000 }}>
         <thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
           <tr>
+<<<<<<< HEAD
             <th>Tidspunkt</th>
             <th>Badevandstemperatur</th>
             <th>Vejr</th>
+=======
+            <th>Timestamp</th>
+            <th>Temperature</th>
+            <th>Weather</th>
+            <th></th>
+>>>>>>> origin/master
           </tr>
         </thead>
         <tbody>{rows}</tbody>
