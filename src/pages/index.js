@@ -77,7 +77,6 @@ const Home = () => {
     timestamp: entry.timestamp,
     value: entry.data.main.humidity,
   }));
-  console.log({timestamp});
 
   return (
     <>
