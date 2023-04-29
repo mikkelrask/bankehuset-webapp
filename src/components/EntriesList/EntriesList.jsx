@@ -77,17 +77,16 @@ const EntriesList = ({ data, onDelete }) => {
   const [scrolled, setScrolled] = useState(false);
 
   const rows = data.map((row) => (
-<<<<<<< HEAD
-    <tr key={row._id}>
-      <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'HH:mm')}</td>
-      <td style={{ verticalAlign: 'top' }}>{row.temperature}</td>
-      <td style={{ verticalAlign: 'top' }}>
-        <Weather data={row.data} />
-      </td>
-    </tr>
-=======
-    <Row key={row._id} data={row} onDelete={onDelete} />
->>>>>>> origin/master
+    <>
+      <tr key={row._id}>
+        <td style={{ verticalAlign: 'top' }}>{format(new Date(row.createdAt), 'HH:mm')}</td>
+        <td style={{ verticalAlign: 'top' }}>{row.temperature}</td>
+        <td style={{ verticalAlign: 'top' }}>
+          <Weather data={row.data} />
+        </td>
+      </tr>
+      <Row key={row._id} data={row} onDelete={onDelete} />
+    </>
   ));
 
   return (
@@ -95,16 +94,9 @@ const EntriesList = ({ data, onDelete }) => {
       <Table sx={{ minWidth: 700, maxWidth: 1000 }}>
         <thead className={cx(classes.header, { [classes.scrolled]: scrolled })}>
           <tr>
-<<<<<<< HEAD
             <th>Tidspunkt</th>
             <th>Badevandstemperatur</th>
             <th>Vejr</th>
-=======
-            <th>Timestamp</th>
-            <th>Temperature</th>
-            <th>Weather</th>
-            <th></th>
->>>>>>> origin/master
           </tr>
         </thead>
         <tbody>{rows}</tbody>

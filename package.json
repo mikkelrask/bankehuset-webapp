@@ -59,13 +59,9 @@
     "redux": "^4.2.0",
     "redux-persist": "^6.0.0",
     "redux-thunk": "^2.4.1",
-<<<<<<< HEAD
     "tailwindcss": "^3.3.2",
-    "theme-ui": "^0.14.6"
-=======
     "theme-ui": "^0.14.6",
     "url": "^0.11.0"
->>>>>>> origin/master
   },
   "devDependencies": {
     "@babel/core": "^7.18.13",

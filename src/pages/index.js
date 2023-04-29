@@ -1,26 +1,18 @@
 import React, { useState } from 'react';
 import { Button } from '@mantine/core';
 import  { useDeleteEntryMutation, useGetEntriesQuery } from "../services/entries";
-<<<<<<< HEAD
 import Logo from "../components/Logo";
 import "../styles/style.css";
 import LatestWeather from "../components/LatestWeather";
-=======
->>>>>>> origin/master
 import EntriesList from "../components/EntriesList";
 import LineChartComponent from "../components/LineChartComponent";
 import { Link } from "gatsby";
 
 const Home = () => {
   const [page, setPage] = useState(1);
-<<<<<<< HEAD
   const [perPage] = useState(250);
   const [showEntriesList, setShowEntriesList] = useState(false);
-=======
-  const [perPage] = useState(25);
->>>>>>> origin/master
 
-<<<<<<< HEAD
   const {
     data,
     isLoading
@@ -30,28 +22,6 @@ const Home = () => {
   }, {
     refetchOnMountOrArgChange: true
   });
-  const [deleteEntryRequest] = useDeleteEntryMutation();
-
-  const handleDelete =  async (id) => {
-    try {
-      await deleteEntryRequest(id);
-    } catch (err) {
-      console.error('Failed to delete entry with ID', id);
-    }
-  }
-
-=======
-  const { data, isLoading } = useGetEntriesQuery(
-    {
-      page,
-      perPage,
-    },
-    {
-      refetchOnMountOrArgChange: true,
-    }
-  );
->>>>>>> main
-
   const [deleteEntryRequest] = useDeleteEntryMutation();
 
   const handleDelete =  async (id) => {
@@ -107,9 +77,9 @@ const Home = () => {
     timestamp: entry.timestamp,
     value: entry.data.main.humidity,
   }));
+  console.log({timestamp});
 
   return (
-<<<<<<< HEAD
     <>
       <div class="lg:container lg:mx-auto">
         <Logo />
@@ -149,7 +119,7 @@ const Home = () => {
         <Button onClick={() => setShowEntriesList((prev) => !prev)}>
           {showEntriesList ? "Skjul entries" : "Vis entries"}
         </Button>
-        {showEntriesList && <EntriesList data={data.data ?? []} onDelete={handleDelete}/>}
+          {showEntriesList ? <EntriesList data={data.data ?? []} onDelete={handleDelete}/> : null}
         <br /><br />
         {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Nyere</Button> : null}{' '}
         {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Ældre</Button> : null}
@@ -157,15 +127,5 @@ const Home = () => {
     </>
   );
 };
-=======
-    <div>
-      <EntriesList data={data.data ?? []} onDelete={handleDelete} />
-      <br /><br />
-      {page > 1 ? <Button onClick={() => setPage(curr => curr - 1)}>Newer</Button> : null}{' '}
-      {data.data.length >= perPage ? <Button onClick={() => setPage(curr => curr + 1)}>Older</Button> : null}
-    </div>
-  )
-}
->>>>>>> origin/master
 
 export default Home;

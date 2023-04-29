@@ -20,10 +20,5 @@ export default async function handler(req, reply) {
     reply.statusCode = 500;
     reply.send({ message: 'Failed to delete entry' });
   }
-<<<<<<< HEAD
-
-=======
- 
->>>>>>> origin/master
  reply.send({ message: 'Deleted entry' });
 }
